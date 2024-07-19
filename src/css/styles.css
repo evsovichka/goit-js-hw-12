@@ -161,4 +161,5 @@ p {
 
 .loadMore-btn {
   width: 125px;
+  display: none;
 }

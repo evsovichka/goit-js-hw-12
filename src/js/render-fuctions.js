@@ -1,5 +1,7 @@
+import { elements } from '../main';
+
 export function createMarkup(arr) {
-  return arr
+  const markup = arr
     .map(
       ({
         webformatURL,
@@ -37,4 +39,6 @@ export function createMarkup(arr) {
       </li>`
     )
     .join('');
+
+  elements.imagesList.insertAdjacentHTML('beforeend', markup);
 }
