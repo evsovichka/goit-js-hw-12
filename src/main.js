@@ -2,6 +2,7 @@ import { makeRequest } from './js/pixabay-api';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { createMarkup } from './js/render-fuctions';
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -20,6 +21,17 @@ const params = {
   per_page: 15,
   maxPage: 0,
 };
+const OpenGallery = new SimpleLightbox('.js-imagesList a', {
+  captions: true,
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+OpenGallery.on('show.simplelightbox', evt => {
+  evt.preventDefault();
+});
+
 elements.form.addEventListener('submit', handlerSubmit);
 
 async function handlerSubmit(evt) {
@@ -47,6 +59,8 @@ async function handlerSubmit(evt) {
     params.maxPage = Math.ceil(total / params.per_page);
 
     createMarkup(hits);
+
+    OpenGallery.refresh();
 
     if (hits.length > 0 && hits.length !== total) {
       elements.loadMoreBtn.style.display = 'block';
@@ -79,8 +93,12 @@ async function handlerClick(evt) {
 
   try {
     const { hits } = await makeRequest(params);
+
     elements.loader.style.display = 'none';
+
     createMarkup(hits);
+
+    OpenGallery.refresh();
 
     const itemCard = document.querySelector('.js-item-imagesList');
     const heightItem = itemCard.getBoundingClientRect().height;
