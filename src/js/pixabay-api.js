@@ -4,7 +4,7 @@ import { createMarkup } from './render-fuctions';
 import { elements } from '../main';
 import axios, { Axios } from 'axios';
 
-axios.defaults.baseURL = 'https://pixabay.com';
+axios.defaults.baseURL = 'http://pixabay.com';
 const ENDPOINT = 'api';
 const KEY = '44929551-fd3f3fb9d8ead760ff0c5783d';
 
