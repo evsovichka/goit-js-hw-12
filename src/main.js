@@ -117,7 +117,7 @@ async function handlerClick(evt) {
     elements.loadMoreBtn.style.display = 'block';
     if (params.page === params.maxPage) {
       elements.loadMoreBtn.style.display = 'none';
-      elements.loadMoreBtn.removeEventListener(('click', handlerClick));
+      elements.loadMoreBtn.removeEventListener('click', handlerClick);
       iziToast.warning({
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
