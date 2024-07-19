@@ -48,19 +48,6 @@ async function handlerSubmit(evt) {
 
     createMarkup(hits);
 
-    const OpenGallery = new SimpleLightbox('.js-imagesList a', {
-      captions: true,
-      captionType: 'attr',
-      captionsData: 'alt',
-      captionPosition: 'bottom',
-      captionDelay: 250,
-    });
-
-    OpenGallery.on('show.simplelightbox', evt => {
-      evt.preventDefault();
-    });
-    OpenGallery.refresh();
-
     if (hits.length > 0 && hits.length !== total) {
       elements.loadMoreBtn.style.display = 'block';
       elements.loadMoreBtn.addEventListener('click', handlerClick);
