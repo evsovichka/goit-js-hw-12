@@ -4,14 +4,15 @@ import { createMarkup } from './render-fuctions';
 import { elements } from '../main';
 import axios, { Axios } from 'axios';
 
-axios.defaults.baseURL = 'https://pixabay.com/';
+// axios.defaults.baseURL = 'https://pixabay.com/';
 const ENDPOINT = 'api';
 const KEY = '44929551-fd3f3fb9d8ead760ff0c5783d';
+const BASEURL = 'https://pixabay.com';
 
 export async function makeRequest({ q = '', page = 1, per_page = 15 } = {}) {
   elements.loader.style.display = 'inline-block';
   return axios
-    .get(`${ENDPOINT}`, {
+    .get(`${BASEURL}/${ENDPOINT}`, {
       params: {
         key: KEY,
         q,
