@@ -11,6 +11,7 @@ const BASEURL = 'https://pixabay.com';
 
 export async function makeRequest({ q = '', page = 1, per_page = 15 } = {}) {
   elements.loader.style.display = 'inline-block';
+  elements.loadMoreBtn.style.display = 'none';
   return axios
     .get(`${BASEURL}/${ENDPOINT}`, {
       params: {
